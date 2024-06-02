@@ -7,6 +7,7 @@ class RecordBase(BaseModel):
 
 
 class RecordCreate(RecordBase):
+    username: str
     score: str
 
 
