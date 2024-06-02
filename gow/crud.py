@@ -20,3 +20,4 @@ def delete_record(db: Session, record_id: int):
     if record is None:
         raise Exception("Not Found")
     db.delete(record)
+    db.commit()
