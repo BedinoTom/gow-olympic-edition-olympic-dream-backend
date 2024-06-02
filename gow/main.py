@@ -8,7 +8,7 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-VERSION = "0.0.2"
+VERSION = "0.0.3"
 
 # Dependency
 def get_db():
@@ -32,3 +32,16 @@ async def create_record(record: schemas.RecordCreate, db: Session = Depends(get_
 @app.get("/records/", response_model=list[schemas.Record])
 async def get_records(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     return crud.get_records(db, skip=skip, limit=limit)
+
+
+@app.delete("/records/{record_id}")
+async def delete_record(record_id: int, db: Session = Depends(get_db)):
+    try:
+        crud.delete_record(db, record_id=record_id)
+    except Exception:
+        return {
+            "status": "failed"
+        }
+    return {
+        "status": "ok"
+    }
