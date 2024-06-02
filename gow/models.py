@@ -1,7 +1,6 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String
 
-from .database import Base
+from gow.database import Base
 
 class Record(Base):
     __tablename__ = "records"
