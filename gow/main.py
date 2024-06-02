@@ -10,8 +10,10 @@ models.Base.metadata.create_all(bind=engine)
 app = FastAPI()
 
 origins = [
+    "null",
+    "http://127.0.0.1:8000",
     "http://localhost:8080",
-    "https://gow.valoriatechnologia.com/"
+    "https://gow.valoriatechnologia.com"
 ]
 
 app.add_middleware(
@@ -22,7 +24,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-VERSION = "0.0.9"
+VERSION = "0.0.10"
 
 # Dependency
 def get_db():
