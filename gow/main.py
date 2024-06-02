@@ -14,7 +14,7 @@ app.add_middleware(
     allow_origins=["*"]
 )
 
-VERSION = "0.0.6"
+VERSION = "0.0.7"
 
 # Dependency
 def get_db():
